@@ -126,7 +126,7 @@ def main():
     parser.add_argument("output", help="path to the output image")
     parser.add_argument("--blocksize", type=int, default=8, help="block size=8/16")
     parser.add_argument("--chromascale", default='4.4.4', help="chroma scale")
-    parser.add_argument("--quantlv", type=float, default=1, help="block size=8/16")
+    parser.add_argument("--quantlv", type=float, default=1, help="quantlization level")
     args = parser.parse_args()
 
     input_file = args.input

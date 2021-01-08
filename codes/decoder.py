@@ -163,9 +163,9 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("input", help="path to the input file")
     parser.add_argument("output", help="path to the output image")
-    parser.add_argument("--originimg", default='NONE', help="path to the original image")
     parser.add_argument("--blocksize", type=int, default=8, help="block size=8/16")
     parser.add_argument("--quantlv", type=float, default=1, help="block size=8/16")
+    parser.add_argument("--originimg", default='NONE', help="path to the original image")
     args = parser.parse_args()
     print(args)
     # assuming that the block is a 8x8 square
@@ -175,11 +175,11 @@ def main():
     dc, ac, tables, blocks_count = read_image_file(args.input, block_size)
 
     # assuming that the image height and width are equal
-    image_side = int(math.sqrt(blocks_count)) * block_size
+    image_size = int(math.sqrt(blocks_count)) * block_size
 
-    blocks_per_line = image_side // block_size
+    blocks_per_line = image_size // block_size
 
-    npmat = np.empty((image_side, image_side, 3), dtype=np.uint8)
+    npmat = np.empty((image_size, image_size, 3), dtype=np.uint8)
 
     for block_index in range(blocks_count):
         i = block_index // blocks_per_line * block_size
